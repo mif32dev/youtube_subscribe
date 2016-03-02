@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description: Fox ui-elements
  * Author: Osadchyi Serhii
@@ -8,8 +9,7 @@
  *
  * @since 0.3
  */
-
-if ( ! class_exists( 'UI_Input_Fox' ) ) {
+if (!class_exists('UI_Input_Fox')) {
 
 	/**
 	 * UI-input.
@@ -22,13 +22,13 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 * @var type array
 		 */
 		private $default_settings = array(
-			'id'				=> 'input-fox',
-			'class'				=> '',
-			'type'				=> 'text',
-			'name'				=> 'input-fox',
-			'value'				=> '',
-			'placeholder'		=> 'enter string',
-			'datalist'			=> null,
+			'id' => 'input-fox',
+			'class' => '',
+			'type' => 'text',
+			'name' => 'input-fox',
+			'value' => '',
+			'placeholder' => 'enter string',
+			'datalist' => null,
 		);
 
 		/**
@@ -37,7 +37,7 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 * @var type array
 		 */
 		private $required_settings = array(
-			'class'				=> 'input-fox',
+			'class' => 'input-fox',
 		);
 
 		/**
@@ -50,13 +50,13 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		/**
 		 * Init base settings
 		 */
-		public function __construct( $attr = null ) {
-			if ( empty( $attr ) || ! is_array( $attr ) ) {
+		public function __construct($attr = null) {
+			if (empty($attr) || !is_array($attr)) {
 				$attr = $this->default_settings;
 			} else {
-				foreach ( $this->default_settings as $key => $value ) {
-					if ( empty( $attr[ $key ] ) ) {
-						$attr[ $key ] = $this->default_settings[ $key ];
+				foreach ($this->default_settings as $key => $value) {
+					if (empty($attr[$key])) {
+						$attr[$key] = $this->default_settings[$key];
 					}
 				}
 			}
@@ -69,7 +69,7 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 */
 		private function assets() {
 			$url = get_template_directory_uri() . '/src/ui/ui-input/assets/css/input.min.css';
-			wp_enqueue_style( 'input-fox', $url, array(), '0.2.0', 'all' );
+			wp_enqueue_style('input-fox', $url, array(), '0.2.0', 'all');
 		}
 
 		/**
@@ -79,37 +79,39 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 */
 		public function output() {
 			$this->assets();
-			foreach ( $this->required_settings as $key => $value ) {
-				$this->settings[ $key ] = empty( $this->settings[ $key ] ) ? $value : $this->settings[ $key ] . ' ' . $value;
+			foreach ($this->required_settings as $key => $value) {
+				$this->settings[$key] = empty($this->settings[$key]) ? $value : $this->settings[$key] . ' ' . $value;
 			}
 
 			$label = null;
-			if ( ! empty( $this->settings['label'] ) ) {
+			if (!empty($this->settings['label'])) {
 				$label = $this->settings['label'];
-				unset( $this->settings['label'] );
+				unset($this->settings['label']);
 			}
 
 			$datalist = null;
-			if ( ! empty( $this->settings['datalist'] ) &&  is_array( $this->settings['datalist'] ) ) {
+			if (!empty($this->settings['datalist']) && is_array($this->settings['datalist'])) {
 				$datalist = $this->settings['datalist'];
 			}
-			unset( $this->settings['datalist'] );
+			unset($this->settings['datalist']);
 
 			$datalist_id = $this->settings['id'] . '-datalist';
 
 			$attributes = '';
-			foreach ( $this->settings as $key => $value ) {
+			foreach ($this->settings as $key => $value) {
 				$attributes .= ' ' . $key . '="' . $value . '"';
 			}
-                        ob_start();
+			ob_start();
 
-                            require 'ui-input/views/input.php';
+			require 'ui-input/views/input.php';
 
-                             $output = ob_get_contents();
-                             
-                        ob_end_clean();
-                        
-                        return $output;
+			$output = ob_get_contents();
+
+			ob_end_clean();
+
+			return $output;
 		}
+
 	}
+
 }

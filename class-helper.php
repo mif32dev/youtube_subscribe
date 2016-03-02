@@ -17,8 +17,8 @@ class Helper {
 	 * @param integer $time   
 	 * @param string  $prefix 
 	 */
-	public static function set_cache($key, $val, $time = 3600) {
-		set_transient($key, $val, $time);
+	public static function set_cache( $key, $val, $time = 3600 ) {
+		set_transient( $key, $val, $time );
 	}
 
 	/**
@@ -27,9 +27,9 @@ class Helper {
 	 * @param  string $prefix 
 	 * @return mixed
 	 */
-	public static function get_cache($key) {
-		$cached = get_transient($key);
-		if (false !== $cached)
+	public static function get_cache( $key ) {
+		$cached = get_transient( $key );
+		if ( false !== $cached )
 			return $cached;
 		return false;
 	}
