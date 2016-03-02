@@ -1,5 +1,4 @@
 <?php
-require_once 'ui/ui-input-fox.php';
 if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 
 	/**
@@ -33,65 +32,12 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 
 			$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=' . $channel . '&key=' . $app_key;
 
-			$result = self::get_contents($url);
-                                print_r($result);
+			$result = Helper::get_contents($url);
+                                 
 			return $result ? json_decode( $result, true ) : false;
 		}
-                                public static function array_get( $array, $key, $default = '' ) {
-                        $array = (array) $array;
-                        if ( is_null( $key ) ) {
-                                return $array;
-                        }
-                        if ( array_key_exists( $key, $array ) ) {
-                                return $array[ $key ];
-                        }
-                        return $default;
-                }
-                 /**
-                  * Set Cache
-                  * @param string  $key
-                  * @param string  $val    
-                  * @param integer $time   
-                  * @param string  $prefix 
-                  */
-                public static function set_cache($key, $val, $time = 3600)
-                {
-                     set_transient( $key, $val, $time );
-                }
-                /**
-                 * Get Cache
-                 * @param  string $key    
-                 * @param  string $prefix 
-                 * @return mixed
-                 */
-                public static function get_cache( $key ) { 
-                        $cached   = get_transient( $key );
-                        if ( false !== $cached ) return $cached;
-                        return false;
-                }
-                /**
-                 * Instead $GLOBALS['wp_filesystem']->get_contents( $file )
-                 *
-                 * @param type $url host url.
-                 * @return string requres data
-                */
-                public static function get_contents( $url ) {
-                   //  echo 222;
-                    $cache_key = md5( $url );
-                    $result = self::get_cache( $cache_key );
-                    if ( ! $result ) {
-                      //  echo $url."<br/>";
-                        $response = wp_remote_get( $url );
-                       // print_r( $response);
-                       // echo 444;
-                        if( is_array( $response ) ) {
-                            self::set_cache( $cache_key, $response['body'] );
-                            return $response['body'];
-                        }
-                    }
-                        
-                    return $result;
-                }
+                                
+                
 		/**
 		 * Frontend view
 		 *
@@ -100,30 +46,30 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 */
 		public function widget( $args, $instance ) {
 
-			$channel_data = $this->get_channel_data( self::array_get( $instance, 'channel_name' ), self::array_get( $instance, 'app_key', self::DEFAULT_YOUTUBE_KEY ) );
+			$channel_data = $this->get_channel_data(Helper::array_get( $instance, 'channel_name' ), Helper::array_get( $instance, 'app_key', self::DEFAULT_YOUTUBE_KEY ) );
 
 			if ( empty( $channel_data['items'][0]['statistics']['subscriberCount'] ) ) {
 				$subscriber_count = 0;
 			} else {
-				$subscriber_count = self::array_get( $channel_data['items'][0]['statistics'], 'subscriberCount', 0 );
+				$subscriber_count = Helper::array_get( $channel_data['items'][0]['statistics'], 'subscriberCount', 0 );
 			}
 
 			if ( empty( $channel_data['items'][0]['statistics']['videoCount'] ) ) {
 				$video_count = 0;
 			} else {
-				$video_count = self::array_get( $channel_data['items'][0]['statistics'], 'videoCount', 0 );
+				$video_count = Helper::array_get( $channel_data['items'][0]['statistics'], 'videoCount', 0 );
 			}
 
-			$this->render(
+			Helper::render(
 				'view/front-end.php',
 				array(
 					'before_widget'		=> $args['before_widget'],
 					'before_title'		=> $args['before_title'],
 					'after_title'		=> $args['after_title'],
 					'after_widget'		=> $args['after_widget'],
-					'title'			=> self::array_get( $instance, 'title' ),
-					'channel_name'		=> self::array_get( $instance, 'channel_name' ),
-					'channel_url'		=> self::array_get( $instance, 'channel_url' ),
+					'title'			=> Helper::array_get( $instance, 'title' ),
+					'channel_name'		=> Helper::array_get( $instance, 'channel_name' ),
+					'channel_url'		=> Helper::array_get( $instance, 'channel_url' ),
 					'subscriber_count'	=> $subscriber_count,
 					'video_count'		=> $video_count,
 				)
@@ -195,22 +141,18 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 						'label'		=> __( 'Channel url', 'blogetti' ),
 					)
 			);
-			$channel_url_html = $channel_url_field->output(); ?>
-                            <div class="tm-youtube-subscribe-form-widget">
-                                    <p> <?php echo $title_html; ?> </p>
-
-                                    <p> <?php echo $app_key_html; ?> </p>
-
-                                    <p> <?php echo $channel_name_html; ?> </p>
-
-                                    <p> <?php echo $channel_url_html; ?> </p>
-
-                                    <p>&nbsp;</p>
-                            </div>
-
-             <?php  }
-
-
+			$channel_url_html = $channel_url_field->output();  
+                      
+                        Helper::render(
+				'view/back-end.php',
+				array(
+					'title_html'		=> $title_html,
+					'app_key_html'		=> $app_key_html,
+					'channel_name_html'	=> $channel_name_html,
+					'channel_url_html'	=> $channel_url_html,
+				)
+			);   
+                }
 		/**
 		 * Update settings
 		 *
@@ -227,20 +169,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 
 			return $instance;
 		}
-                private function render($route, $args) {
- 
-                        extract($args);
 
-			ob_start();
-
-                            require $route;
-
-                            $view = ob_get_contents();
-
-			ob_end_clean(); 
-                        echo $view;
-					
-		}
 	
 	}
 }

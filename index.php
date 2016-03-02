@@ -14,7 +14,8 @@
  */
 
 function subscribe_widget() {
-    
+     require_once 'ui/ui-input-fox.php';
+     require_once 'class-helper.php';
      require_once 'class-youtube_subscribe_widget.php';
      register_widget( 'Youtube_Subscribe_Widget' );
    
