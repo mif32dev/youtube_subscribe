@@ -4,7 +4,7 @@
  * Author: Bazil Anton
  * Author URI: https://github.com/mif32dev
  *
- * @package  
+ * @package Monster_Youtube_Subscribe_Widget
  *
  * @since 0.1
  */
@@ -12,24 +12,26 @@ class Helper {
 
 	/**
 	 * Set Cache
+	 * 
 	 * @param string  $key
 	 * @param string  $val    
 	 * @param integer $time   
-	 * @param string  $prefix 
+	 * @param string $prefix 
 	 */
-	public static function set_cache ( $key, $val, $time = 3600 ) {
+	public static function set_cache( $key, $val, $time = 3600 ) {
 		set_transient( $key, $val, $time );
 	}
 
 	/**
 	 * Get Cache
+	 * 
 	 * @param  string $key    
 	 * @param  string $prefix 
 	 * @return mixed
 	 */
-	public static function get_cache ( $key ) {
+	public static function get_cache( $key ) {
 		$cached = get_transient( $key );
-		if ( false !== $cached )
+		if ( $cached !== false )
 			return $cached;
 		return false;
 	}
@@ -55,10 +57,10 @@ class Helper {
 	}
 
 	/**
-	 *  
+	 * Making and print view
 	 *
-	 * @param $route route to the view file.
-	 * @param $args data value for view.
+	 * @param string $route route to the view file.
+	 * @param array $args data value for view.
 	 */
 	public static function render( $route, $args ) {
 
@@ -74,7 +76,14 @@ class Helper {
 		echo $view;
 	}
 
-	public static function array_get ( $array, $key, $default = '' ) {
+	/**
+	 * searching at array
+	 *
+	 * @param array $array array for search.
+	 * @param string $key searching key.
+	 * @param string $default retutn value if search fail.
+	 */
+	public static function array_get( $array, $key, $default = '' ) {
 		$array = (array) $array;
 		if ( is_null( $key ) ) {
 			return $array;

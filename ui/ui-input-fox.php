@@ -67,7 +67,7 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 * Add styles
 		 */
 		private function assets() {
-			$url = get_template_directory_uri() . '/src/ui/ui-input/assets/css/input.min.css';
+			$url =  WP_PLUGIN_URL . '/youtube_subscribe/ui/ui-input/assets/css/input.min.css';
 			wp_enqueue_style( 'input-fox', $url, array(), '0.2.0', 'all' );
 		}
 

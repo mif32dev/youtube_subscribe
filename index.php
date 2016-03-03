@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Doc Comment
  * Plugin Name: TM Youtube Subscribe Widget

@@ -23,7 +23,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-					'youtube_subscribe_widget', __( 'Youtube subscribe widget', 'blogetti' ), array( 'description' => __('Youtube subscribe Widget', 'blogetti' ) )
+					'youtube_subscribe_widget', __( 'Youtube subscribe widget', 'blogetti' ), array( 'description' => __( 'Youtube subscribe Widget', 'blogetti' ) )
 			);
 		}
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 *
 		 * @param type $instance array.
 		 */
-		public function form ( $instance ) {
+		public function form( $instance ) {
 			$title_field = new UI_Input_Fox(
 					array(
 						'id'			=> $this->get_field_id( 'title' ),
