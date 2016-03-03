@@ -4,11 +4,11 @@
  * Author: Osadchyi Serhii
  * Author URI: https://github.com/RDSergij
  *
- * @package  
+ * @package Monster_Youtube_Subscribe_Widget
  *
  * @since 0.1
  */
-if (!class_exists('Youtube_Subscribe_Widget')) {
+if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 
 	/**
 	 * Adds Youtube_Subscribe_Widget widget.
@@ -33,7 +33,7 @@ if (!class_exists('Youtube_Subscribe_Widget')) {
 		 * @return array
 		 */
 		private function get_channel_data( $channel, $app_key = '' ) {
-			if ( empty ( $app_key ) ) {
+			if ( empty( $app_key ) ) {
 				$app_key = self::DEFAULT_YOUTUBE_KEY;
 			}
 
@@ -54,13 +54,13 @@ if (!class_exists('Youtube_Subscribe_Widget')) {
 
 			$channel_data = $this->get_channel_data( Helper::array_get( $instance, 'channel_name' ), Helper::array_get( $instance, 'app_key', self::DEFAULT_YOUTUBE_KEY ) );
 
-			if ( empty ( $channel_data['items'][0]['statistics']['subscriberCount'] ) ) {
+			if ( empty( $channel_data['items'][0]['statistics']['subscriberCount'] ) ) {
 				$subscriber_count = 0;
 			} else {
 				$subscriber_count = Helper::array_get( $channel_data['items'][0]['statistics'], 'subscriberCount', 0 );
 			}
 
-			if ( empty ( $channel_data['items'][0]['statistics']['videoCount'] ) ) {
+			if ( empty( $channel_data['items'][0]['statistics']['videoCount'] ) ) {
 				$video_count = Helper::array_get( $instance, 'novideo' );
 			} else {
 				$video_count = Helper::array_get( $channel_data['items'][0]['statistics'], 'videoCount', 0 );
@@ -68,7 +68,6 @@ if (!class_exists('Youtube_Subscribe_Widget')) {
 				if ( 1 == $video_count ) {
 					$video_count = $video_count . ' ' . Helper::array_get( $instance, 'onevideo' );
 				}
-				
 			}
 
 			Helper::render(
@@ -77,7 +76,7 @@ if (!class_exists('Youtube_Subscribe_Widget')) {
 				'before_title' => $args['before_title'],
 				'after_title' => $args['after_title'],
 				'after_widget' => $args['after_widget'],
-				'title' => Helper::array_get($instance, 'title'),
+				'title' => Helper::array_get( $instance, 'title' ),
 				'channel_name' => Helper::array_get( $instance, 'channel_name' ),
 				'channel_url' => Helper::array_get( $instance, 'channel_url' ),
 				'subscriber_count' => $subscriber_count,
@@ -91,8 +90,7 @@ if (!class_exists('Youtube_Subscribe_Widget')) {
 		 *
 		 * @param type $instance array.
 		 */
-		public function form($instance) {
-				print_r($instance);
+		public function form ( $instance ) {
 			$title_field = new UI_Input_Fox(
 					array(
 						'id'			=> $this->get_field_id( 'title' ),
