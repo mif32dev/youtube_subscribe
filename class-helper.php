@@ -13,10 +13,9 @@ class Helper {
 	/**
 	 * Set Cache
 	 * 
-	 * @param string  $key
-	 * @param string  $val    
-	 * @param integer $time   
-	 * @param string $prefix 
+	 * @param string  $key name of cache file
+	 * @param string  $val value of data
+	 * @param integer $time time of cache
 	 */
 	public static function set_cache( $key, $val, $time = 3600 ) {
 		set_transient( $key, $val, $time );
@@ -25,14 +24,14 @@ class Helper {
 	/**
 	 * Get Cache
 	 * 
-	 * @param  string $key    
-	 * @param  string $prefix 
+	 * @param  string $key  name of cache file
 	 * @return mixed
 	 */
 	public static function get_cache( $key ) {
 		$cached = get_transient( $key );
-		if ( $cached !== false )
+		if ( false !== $cached ) {
 			return $cached;
+		}
 		return false;
 	}
 
@@ -59,8 +58,8 @@ class Helper {
 	/**
 	 * Making and print view
 	 *
-	 * @param string $route route to the view file.
-	 * @param array $args data value for view.
+	 * @param string  $route route to the view file.
+	 * @param array  $args data value for view.
 	 */
 	public static function render( $route, $args ) {
 
@@ -77,11 +76,11 @@ class Helper {
 	}
 
 	/**
-	 * searching at array
+	 * Ыearching at array
 	 *
-	 * @param array $array array for search.
-	 * @param string $key searching key.
-	 * @param string $default retutn value if search fail.
+	 * @param array  $array array for search.
+	 * @param string  $key searching key.
+	 * @param string  $default retutn value if search fail.
 	 */
 	public static function array_get( $array, $key, $default = '' ) {
 		$array = (array) $array;
