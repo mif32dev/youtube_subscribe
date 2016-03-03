@@ -10,7 +10,6 @@
 	<div class="youtube">
 		<?php
 		if ( '' != $title ) {
-			//echo $title;
 			echo $before_title;
 			echo apply_filters( 'widget_title', $title );
 			echo $after_title;

@@ -50,11 +50,11 @@ if ( ! class_exists( 'UI_Input_Fox' ) ) {
 		 * Init base settings
 		 */
 		public function __construct( $attr = null ) {
-			if ( empty( $attr ) || !is_array( $attr ) ) {
+			if ( empty( $attr ) || ! is_array( $attr ) ) {
 				$attr = $this->default_settings;
 			} else {
 				foreach ( $this->default_settings as $key => $value ) {
-					if ( empty($attr[ $key ] ) ) {
+					if ( empty( $attr[ $key ] ) ) {
 						$attr[ $key ] = $this->default_settings[ $key ];
 					}
 				}

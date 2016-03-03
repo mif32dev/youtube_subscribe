@@ -17,7 +17,7 @@ class Helper {
 	 * @param integer $time   
 	 * @param string  $prefix 
 	 */
-	public static function set_cache( $key, $val, $time = 3600 ) {
+	public static function set_cache ( $key, $val, $time = 3600 ) {
 		set_transient( $key, $val, $time );
 	}
 
@@ -27,7 +27,7 @@ class Helper {
 	 * @param  string $prefix 
 	 * @return mixed
 	 */
-	public static function get_cache( $key ) {
+	public static function get_cache ( $key ) {
 		$cached = get_transient( $key );
 		if ( false !== $cached )
 			return $cached;
@@ -40,13 +40,13 @@ class Helper {
 	 * @param type $url host url.
 	 * @return string requres data
 	 */
-	public static function get_contents($url) {
-		$cache_key = md5($url);
-		$result = self::get_cache($cache_key);
-		if (!$result) {
-			$response = wp_remote_get($url);
-			if (is_array($response)) {
-				self::set_cache($cache_key, $response['body']);
+	public static function get_contents( $url ) {
+		$cache_key = md5( $url );
+		$result = self::get_cache( $cache_key );
+		if ( ! $result ) {
+			$response = wp_remote_get( $url );
+			if ( is_array( $response ) ) {
+				self::set_cache( $cache_key, $response['body'] );
 				return $response['body'];
 			}
 		}
@@ -60,9 +60,9 @@ class Helper {
 	 * @param $route route to the view file.
 	 * @param $args data value for view.
 	 */
-	public static function render($route, $args) {
+	public static function render( $route, $args ) {
 
-		extract($args);
+		extract( $args );
 
 		ob_start();
 
@@ -74,15 +74,14 @@ class Helper {
 		echo $view;
 	}
 
-	public static function array_get($array, $key, $default = '') {
+	public static function array_get ( $array, $key, $default = '' ) {
 		$array = (array) $array;
-		if (is_null($key)) {
+		if ( is_null( $key ) ) {
 			return $array;
 		}
-		if (array_key_exists($key, $array)) {
-			return $array[$key];
+		if ( array_key_exists( $key, $array ) ) {
+			return $array[ $key ];
 		}
 		return $default;
 	}
-
 }

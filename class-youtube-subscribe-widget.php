@@ -193,18 +193,16 @@ if (!class_exists('Youtube_Subscribe_Widget')) {
 		 */
 		public function update( $new_instance, $old_instance ) {
 			$instance = array();
-			$instance['title'] = (!empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 			$instance['app_key'] = esc_attr( $new_instance['app_key'] );
 			$instance['channel_name'] = esc_attr( $new_instance['channel_name'] );
 			$instance['channel_url'] = esc_attr( $new_instance['channel_url'] );
 			$instance['novideo'] = esc_attr( $new_instance['novideo'] );
 			$instance['onevideo'] = esc_attr( $new_instance['onevideo'] );
 			$instance['manyvideos'] = esc_attr( $new_instance['manyvideos'] );
-			
 
 			return $instance;
 		}
-
 	}
 
 }

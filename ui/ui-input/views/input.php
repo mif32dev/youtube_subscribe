@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description: Fox ui-elements
  * Author: Osadchyi Serhii
