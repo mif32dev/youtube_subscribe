@@ -1,0 +1,161 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+.youtube {
+    position: relative
+}
+
+.youtube .channel-name {
+    border-bottom: 1px solid #d3d3d8;
+    position: relative;
+    margin: 15px
+        0 30px;
+    padding: 0
+        50px 0 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    white-space: normal
+}
+
+.youtube .channel-name
+h5 {
+    margin: 0
+}
+
+.youtube .channel-name
+p {
+    margin: 5px
+        0 26px
+}
+
+.youtube .channel-name .icon {
+    position: absolute;
+    right: 3px;
+    top: 5px;
+    max-width: 50px;
+    font-size: 2.5em;
+    color: #cc181e 
+}
+
+.youtube .btn-md {
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    width: calc(100% - 115px)
+}
+
+.youtube .btn-md
+i {
+    margin: 0
+        5px 0 0
+}
+
+.youtube .button-cnt {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    min-width: 1px
+}
+
+.youtube-cnt,
+.youtube
+.btn {
+    height: 50px;
+    line-height: 50px
+}
+
+.youtube
+.btn {
+    padding: 0;
+    text-align: center;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1
+}
+
+.youtube .btn
+i {
+    margin: 0
+}
+
+.two-sidebars .youtube .btn
+i {
+    display: none
+}
+
+.youtube-cnt {
+    position: relative;
+    -webkit-flex: 0 0 92px;
+    -ms-flex: 0 0 92px;
+    flex: 0 0 92px;
+    margin: 0
+        0 0 20px;
+    text-align: center;
+    background-color: #f3f3f3
+}
+
+.youtube-cnt:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(243,243,243,0);
+    border-right-color: #f3f3f3;
+    border-width: 8px;
+    margin-top: -8px
+}
+.text-primary {
+    color: #fe7545;
+}
+.txt-heading {
+    font-style: italic;
+    font-family: 'Noto Serif',serif;
+}
+.btn.btn-primary {
+    background-color: #fe7545;
+    color: #fff;
+}
+.btn.btn-primary:hover{
+    background-color: #303043;
+}
+.btn i {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1.375rem;
+    line-height: inherit;
+    margin: 0px -5px 0px 3px;
+    color: inherit;
+}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+}
