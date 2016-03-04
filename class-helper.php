@@ -75,7 +75,7 @@ class Helper {
 	}
 
 	/**
-	 * Ыearching at array
+	 * Searching at array
 	 *
 	 * @param array  $array array for search.
 	 * @param string $key searching key.

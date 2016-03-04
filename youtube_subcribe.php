@@ -1,19 +1,18 @@
 <?php
 /**
- * Plugin Doc Comment
  * Plugin Name: TM Youtube Subscribe Widget
- * Plugin URI: https://github.com/RDSergij
- * Description: Show twitter timeline of user
+ * Plugin URI:
+ * Description:
  * Version: 1.0
- * Author: Osadchyi Serhii
- * Author URI: https://github.com/RDSergij
- * Text Domain: photolab
+ * Author: Templatemonster
+ * Author URI: http://www.templatemonster.com/
+ * Text Domain: youtube_subscribe
  *
  * @package Monster_Youtube_Subscribe_Widget
  *
  * @since 1.1
  */
-function subscribe_widget() {
+function ys_subscribe_widget() {
 	require_once 'ui/ui-input-fox.php';
 	require_once 'class-helper.php';
 	require_once 'class-youtube-subscribe-widget.php';
@@ -22,4 +21,4 @@ function subscribe_widget() {
 	wp_enqueue_style( 'font-awesome', WP_PLUGIN_URL . '/youtube_subscribe/assets/font-awesome/css/font-awesome.min.css' );
 }
 
-add_action( 'widgets_init', 'subscribe_widget' );
+add_action( 'widgets_init', 'ys_subscribe_widget' );
