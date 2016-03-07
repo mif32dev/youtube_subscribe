@@ -11,9 +11,9 @@
 class Helper {
 	/**
 	 * Set Cache
-	 * 
+	 *
 	 * @param string  $key cache name.
-	 * @param string  $val data. 
+	 * @param string  $val data.
 	 * @param integer $time cache time.
 	 */
 	public static function set_cache( $key, $val, $time = 3600 ) {
@@ -22,8 +22,8 @@ class Helper {
 
 	/**
 	 * Get Cache
-	 * 
-	 * @param string $key cache file
+	 *
+	 * @param string $key cache file.
 	 * @return mixed
 	 */
 	public static function get_cache( $key ) {
