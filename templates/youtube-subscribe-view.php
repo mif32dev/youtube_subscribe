@@ -25,7 +25,7 @@
 		<div class="button-cnt">
 			<a href="<?php echo $args['channel_url']; ?>" class="btn btn-primary">
 				<i class="material-icons fa fa-play-circle-o"></i>
-				<em><?php echo __( 'Subscribe', 'blogetti' ); ?></em>
+				<em><?php echo __( 'Subscribe', 'youtube-subscribe' ); ?></em>
 			</a>
 
 			<div class="youtube-cnt">

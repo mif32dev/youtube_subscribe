@@ -20,7 +20,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-					'youtube_subscribe_widget', __( 'Youtube subscribe widget', 'youtube_subscribe' ), array( 'description' => __( 'Youtube subscribe Widget', 'youtube_subscribe' ) )
+					'youtube-subscribe_widget', __( 'Youtube subscribe widget', 'youtube-subscribe' ), array( 'description' => __( 'Youtube subscribe Widget', 'youtube-subscribe' ) )
 			);
 		}
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 
 			$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' . end( $url_parts ) . '&key=' . $app_key;
 
-			$result = Helper::get_contents( $url );
+			$result = Youtube_Subscribe_Helper::get_contents( $url );
 
 			return $result ? json_decode( $result, true ) : false;
 		}
@@ -48,34 +48,34 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 */
 		public function widget( $args, $instance ) {
 
-			$channel_data = $this->get_channel_data( Helper::array_get( $instance, 'channel_url' ), Helper::array_get( $instance, 'app_key', '' ) );
+			$channel_data = $this->get_channel_data( Youtube_Subscribe_Helper::array_get( $instance, 'channel_url' ), Youtube_Subscribe_Helper::array_get( $instance, 'app_key', '' ) );
 
 			if ( empty( $channel_data['items'][0]['statistics']['subscriberCount'] ) ) {
 				$subscriber_count = 0;
 			} else {
-				$subscriber_count = Helper::array_get( $channel_data['items'][0]['statistics'], 'subscriberCount', 0 );
+				$subscriber_count = Youtube_Subscribe_Helper::array_get( $channel_data['items'][0]['statistics'], 'subscriberCount', 0 );
 			}
 
 			if ( empty( $channel_data['items'][0]['statistics']['videoCount'] ) ) {
-				$video_count = Helper::array_get( $instance, 'novideo' );
+				$video_count = Youtube_Subscribe_Helper::array_get( $instance, 'novideo' );
 			} else {
-				$video_count = Helper::array_get( $channel_data['items'][0]['statistics'], 'videoCount', 0 );
-				$video_count = $video_count . ' ' . Helper::array_get( $instance, 'manyvideos' );
+				$video_count = Youtube_Subscribe_Helper::array_get( $channel_data['items'][0]['statistics'], 'videoCount', 0 );
+				$video_count = $video_count . ' ' . Youtube_Subscribe_Helper::array_get( $instance, 'manyvideos' );
 				if ( 1 == $video_count ) {
-					$video_count = $video_count . ' ' . Helper::array_get( $instance, 'onevideo' );
+					$video_count = $video_count . ' ' . Youtube_Subscribe_Helper::array_get( $instance, 'onevideo' );
 				}
 			}
 
-			$file = Helper::get_wiev_file( );
-			Helper::render(
+			$file = Youtube_Subscribe_Helper::get_view_file( );
+			Youtube_Subscribe_Helper::render(
 				$file , array(
 				'before_widget' => $args['before_widget'],
 				'before_title' => $args['before_title'],
 				'after_title' => $args['after_title'],
 				'after_widget' => $args['after_widget'],
-				'title' => Helper::array_get( $instance, 'title' ),
-				'channel_name' => Helper::array_get( $instance, 'channel_name' ),
-				'channel_url' => Helper::array_get( $instance, 'channel_url' ),
+				'title' => Youtube_Subscribe_Helper::array_get( $instance, 'title' ),
+				'channel_name' => Youtube_Subscribe_Helper::array_get( $instance, 'channel_name' ),
+				'channel_url' => Youtube_Subscribe_Helper::array_get( $instance, 'channel_url' ),
 				'subscriber_count' => $subscriber_count,
 				'video_count' => $video_count,
 					)
@@ -92,9 +92,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'			=> $this->get_field_id( 'title' ),
 						'name'			=> $this->get_field_name( 'title' ),
-						'value'			=> Helper::array_get( $instance, 'title' ),
-						'placeholder'	=> __( 'Widget title', 'youtube_subscribe' ),
-						'label'			=> __( 'Title', 'youtube_subscribe' ),
+						'value'			=> Youtube_Subscribe_Helper::array_get( $instance, 'title' ),
+						'placeholder'	=> __( 'Widget title', 'youtube-subscribe' ),
+						'label'			=> __( 'Title', 'youtube-subscribe' ),
 					)
 			);
 			$title_html = $title_field->output();
@@ -103,9 +103,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'			=> $this->get_field_id( 'app_key' ),
 						'name'			=> $this->get_field_name( 'app_key' ),
-						'value'			=> Helper::array_get( $instance, 'app_key' ),
-						'placeholder'	=> __( 'api key', 'youtube_subscribe' ),
-						'label'			=> __( 'Youtube API key', 'youtube_subscribe' ),
+						'value'			=> Youtube_Subscribe_Helper::array_get( $instance, 'app_key' ),
+						'placeholder'	=> __( 'api key', 'youtube-subscribe' ),
+						'label'			=> __( 'Youtube API key', 'youtube-subscribe' ),
 					)
 			);
 			$app_key_html = $app_key_field->output();
@@ -114,9 +114,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'		=> $this->get_field_id( 'channel_name' ),
 						'name'		=> $this->get_field_name( 'channel_name' ),
-						'value'		=> Helper::array_get( $instance, 'channel_name' ),
-						'placeholder'	=> __( 'channel name', 'youtube_subscribe' ),
-						'label'		=> __( 'Channel name', 'youtube_subscribe' ),
+						'value'		=> Youtube_Subscribe_Helper::array_get( $instance, 'channel_name' ),
+						'placeholder'	=> __( 'channel name', 'youtube-subscribe' ),
+						'label'		=> __( 'Channel name', 'youtube-subscribe' ),
 					)
 			);
 			$channel_name_html = $channel_name_field->output();
@@ -125,9 +125,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'			=> $this->get_field_id( 'channel_url' ),
 						'name'			=> $this->get_field_name( 'channel_url' ),
-						'value'			=> Helper::array_get( $instance, 'channel_url' ),
-						'placeholder'	=> __( 'channel url', 'youtube_subscribe' ),
-						'label'			=> __( 'Channel url', 'youtube_subscribe' ),
+						'value'			=> Youtube_Subscribe_Helper::array_get( $instance, 'channel_url' ),
+						'placeholder'	=> __( 'channel url', 'youtube-subscribe' ),
+						'label'			=> __( 'Channel url', 'youtube-subscribe' ),
 					)
 			);
 			$channel_url_html = $channel_url_field->output();
@@ -136,9 +136,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'			=> $this->get_field_id( 'novideo' ),
 						'name'			=> $this->get_field_name( 'novideo' ),
-						'value'			=> Helper::array_get( $instance, 'novideo' ),
-						'placeholder'	=> __( 'no video', 'youtube_subscribe' ),
-						'label'			=> __( 'Videos count label(no video)', 'youtube_subscribe' ),
+						'value'			=> Youtube_Subscribe_Helper::array_get( $instance, 'novideo' ),
+						'placeholder'	=> __( 'no video', 'youtube-subscribe' ),
+						'label'			=> __( 'Videos count label(no video)', 'youtube-subscribe' ),
 					)
 			);
 			$novideo_html = $label_for_novideo->output();
@@ -147,9 +147,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'			=> $this->get_field_id( 'onevideo' ),
 						'name'			=> $this->get_field_name( 'onevideo' ),
-						'value'			=> Helper::array_get( $instance, 'onevideo' ),
-						'placeholder'	=> __( 'video', 'youtube_subscribe' ),
-						'label'			=> __( 'Videos count label(1 video)', 'youtube_subscribe' ),
+						'value'			=> Youtube_Subscribe_Helper::array_get( $instance, 'onevideo' ),
+						'placeholder'	=> __( 'video', 'youtube-subscribe' ),
+						'label'			=> __( 'Videos count label(1 video)', 'youtube-subscribe' ),
 					)
 			);
 			$one_video_html = $label_for_one_video->output();
@@ -158,13 +158,13 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					array(
 						'id'			=> $this->get_field_id( 'manyvideos' ),
 						'name'			=> $this->get_field_name( 'manyvideos' ),
-						'value'			=> Helper::array_get( $instance, 'manyvideos' ),
-						'placeholder'	=> __( 'videos', 'youtube_subscribe' ),
-						'label'			=> __( 'Videos count label(more than 1 video)', 'youtube_subscribe' ),
+						'value'			=> Youtube_Subscribe_Helper::array_get( $instance, 'manyvideos' ),
+						'placeholder'	=> __( 'videos', 'youtube-subscribe' ),
+						'label'			=> __( 'Videos count label(more than 1 video)', 'youtube-subscribe' ),
 					)
 			);
 			$many_videos_html = $label_for_many_videos->output();
-			Helper::render(
+			Youtube_Subscribe_Helper::render(
 					'templates/backend-view.php',
 					array(
 						'title_html'		 => $title_html,

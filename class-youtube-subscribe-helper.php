@@ -8,7 +8,7 @@
  *
  * @since 0.1
  */
-class Helper {
+class Youtube_Subscribe_Helper {
 	/**
 	 * Set Cache
 	 *
@@ -96,7 +96,7 @@ class Helper {
 	/**
 	 * Overloading of view file
 	 */
-	public static function get_wiev_file() {
+	public static function get_view_file() {
 
 		if ( file_exists( get_template_directory() . '/templates/youtube-subscribe.php' ) ) {
 			return get_template_directory() . '/templates/youtube-subscribe.php';
