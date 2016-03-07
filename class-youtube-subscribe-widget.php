@@ -31,9 +31,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 */
 		private function get_channel_data( $channel_url, $app_key = '' ) {
 
-			$url_parts = explode("/", $channel_url);
+			$url_parts = explode( '/', $channel_url );
 
-			$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' . end($url_parts) . '&key=' . $app_key;
+			$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' . end( $url_parts ) . '&key=' . $app_key;
 
 			$result = Helper::get_contents( $url );
 
@@ -164,9 +164,8 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					)
 			);
 			$many_videos_html = $label_for_many_videos->output();
-			//echo get_template_directory() . '/templates/youtube_subscribe.php';
 			Helper::render(
-					'templates/backend_view.php',
+					'templates/backend-view.php',
 					array(
 						'title_html'		 => $title_html,
 						'app_key_html'		 => $app_key_html,

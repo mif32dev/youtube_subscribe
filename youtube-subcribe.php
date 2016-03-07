@@ -6,7 +6,7 @@
  * Version: 1.0
  * Author: Templatemonster
  * Author URI: http://www.templatemonster.com/
- * Text Domain: youtube_subscribe
+ * Text Domain: youtube-subscribe
  *
  * @package Monster_Youtube_Subscribe_Widget
  *
@@ -18,7 +18,7 @@ function ys_subscribe_widget() {
 	require_once 'class-youtube-subscribe-widget.php';
 	register_widget( 'Youtube_Subscribe_Widget' );
 
-	if( apply_filters( 'youtube_subscribe_styles', true ) ) {
+	if ( apply_filters ( 'youtube_subscribe_styles', true ) ) {
 		wp_enqueue_style( 'youtube-widget-style',  plugin_dir_url( __FILE__ ) . '/youtube-style.css' );
 		wp_enqueue_style( 'font-awesome', plugin_dir_url( __FILE__ ) . '/assets/font-awesome/css/font-awesome.min.css' );
 	}

@@ -12,9 +12,9 @@ class Helper {
 	/**
 	 * Set Cache
 	 * 
-	 * @param string  $key cache name
-	 * @param string  $val data 
-	 * @param integer $time cache time
+	 * @param string  $key cache name.
+	 * @param string  $val data. 
+	 * @param integer $time cache time.
 	 */
 	public static function set_cache( $key, $val, $time = 3600 ) {
 		set_transient( $key, $val, $time );
@@ -62,7 +62,7 @@ class Helper {
 	 */
 	public static function render( $route, $args ) {
 
-		if( $route ) {
+		if ( $route ) {
 			ob_start();
 
 			include $route;
@@ -71,8 +71,8 @@ class Helper {
 
 			ob_end_clean();
 			echo $view;
-		}else{
-			echo "Template not found";
+		} else {
+			echo 'Template not found';
 		}
 	}
 
@@ -96,13 +96,13 @@ class Helper {
 	/**
 	 * Overloading of view file
 	 */
-	public static function get_wiev_file( ) {
+	public static function get_wiev_file() {
 
-		if ( file_exists ( get_template_directory() . '/templates/youtube_subscribe.php' ) ) {
-			return get_template_directory() . '/templates/youtube_subscribe.php';
+		if ( file_exists( get_template_directory() . '/templates/youtube-subscribe.php' ) ) {
+			return get_template_directory() . '/templates/youtube-subscribe.php';
 		}
-		if ( file_exists ( plugin_dir_path( __FILE__ ) . '/templates/youtube_subscribe.php' ) ) {
-			return plugin_dir_path( __FILE__ ) . '/templates/youtube_subscribe.php';
+		if ( file_exists( plugin_dir_path( __FILE__ ) . '/templates/youtube-subscribe-view.php' ) ) {
+			return plugin_dir_path( __FILE__ ) . '/templates/youtube-subscribe-view.php';
 		}
 
 		return false;
