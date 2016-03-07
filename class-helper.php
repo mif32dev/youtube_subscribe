@@ -62,14 +62,18 @@ class Helper {
 	 */
 	public static function render( $route, $args ) {
 
-		ob_start();
+		if( $route ) {
+			ob_start();
 
-		require $route;
+			include $route;
 
-		$view = ob_get_contents();
+			$view = ob_get_contents();
 
-		ob_end_clean();
-		echo $view;
+			ob_end_clean();
+			echo $view;
+		}else{
+			echo "Template not found";
+		}
 	}
 
 	/**
@@ -88,5 +92,19 @@ class Helper {
 			return $array[ $key ];
 		}
 		return $default;
+	}
+	/**
+	 * Overloading of view file
+	 */
+	public static function get_wiev_file( ) {
+
+		if ( file_exists ( get_template_directory() . '/templates/youtube_subscribe.php' ) ) {
+			return get_template_directory() . '/templates/youtube_subscribe.php';
+		}
+		if ( file_exists ( plugin_dir_path( __FILE__ ) . '/templates/youtube_subscribe.php' ) ) {
+			return plugin_dir_path( __FILE__ ) . '/templates/youtube_subscribe.php';
+		}
+
+		return false;
 	}
 }

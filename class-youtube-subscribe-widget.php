@@ -66,8 +66,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 				}
 			}
 
+			$file = Helper::get_wiev_file( );
 			Helper::render(
-					'view/front-end.php', array(
+				$file , array(
 				'before_widget' => $args['before_widget'],
 				'before_title' => $args['before_title'],
 				'after_title' => $args['after_title'],
@@ -163,9 +164,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 					)
 			);
 			$many_videos_html = $label_for_many_videos->output();
-
+			//echo get_template_directory() . '/templates/youtube_subscribe.php';
 			Helper::render(
-					'view/back-end.php',
+					'templates/backend_view.php',
 					array(
 						'title_html'		 => $title_html,
 						'app_key_html'		 => $app_key_html,
