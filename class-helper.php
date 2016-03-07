@@ -62,8 +62,6 @@ class Helper {
 	 */
 	public static function render( $route, $args ) {
 
-		extract( $args );
-
 		ob_start();
 
 		require $route;

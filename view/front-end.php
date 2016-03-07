@@ -5,34 +5,34 @@
  * @package TM_Youtube_Channel_Widget
  */
 ?>
-<?php echo $before_widget; ?>
+<?php echo $args['before_widget']; ?>
 <div class="bg-white inset-3">
 	<div class="youtube">
 		<?php
-		if ( '' != $title ) {
-			echo $before_title;
-			echo apply_filters( 'widget_title', $title );
-			echo $after_title;
+		if ( '' != $args['title'] ) {
+			echo $args['before_title'];
+			echo apply_filters( 'widget_title', $args['title'] );
+			echo $args['after_title'];
 		}
 		?>
 
 		<div class="channel-name">
-			<h5 class="txt-heading text-primary"> <?php echo $channel_name; ?></h5>
-			<p> <?php echo $video_count; ?></p>
-			<a href="<?php echo $channel_url; ?>" class="icon icon-lg icon-secondary fa fa-3x fa-youtube"></a>
+			<h5 class="txt-heading text-primary"> <?php echo $args['channel_name']; ?></h5>
+			<p> <?php echo $args['video_count']; ?></p>
+			<a href="<?php echo $args['channel_url']; ?>" class="icon icon-lg icon-secondary fa fa-3x fa-youtube"></a>
 		</div>
 
 		<div class="button-cnt">
-			<a href="<?php echo $channel_url; ?>" class="btn btn-primary">
+			<a href="<?php echo $args['channel_url']; ?>" class="btn btn-primary">
 				<i class="material-icons fa fa-play-circle-o"></i>
 				<em><?php echo __( 'Subscribe', 'blogetti' ); ?></em>
 			</a>
 
 			<div class="youtube-cnt">
-				<p><?php echo $subscriber_count ?></p>
+				<p><?php echo $args['subscriber_count']; ?></p>
 			</div>
 		</div>
 	</div>
 </div>
 <?php
-echo $after_widget;
+echo $args['after_widget'];
