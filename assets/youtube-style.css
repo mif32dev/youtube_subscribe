@@ -3,11 +3,11 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-.youtube {
+[id*="youtube-subscribe_widget"] {
     position: relative
 }
 
-.youtube .channel-name {
+[id*="youtube-subscribe_widget"] .channel-name {
     border-bottom: 1px solid #d3d3d8;
     position: relative;
     margin: 15px
@@ -25,18 +25,18 @@ and open the template in the editor.
     white-space: normal
 }
 
-.youtube .channel-name
+[id*="youtube-subscribe_widget"] .channel-name
 h5 {
     margin: 0
 }
 
-.youtube .channel-name
+[id*="youtube-subscribe_widget"] .channel-name
 p {
     margin: 5px
         0 26px
 }
 
-.youtube .channel-name .icon {
+[id*="youtube-subscribe_widget"] .channel-name .icon {
     position: absolute;
     right: 3px;
     top: 5px;
@@ -45,7 +45,7 @@ p {
     color: #cc181e 
 }
 
-.youtube .btn-md {
+[id*="youtube-subscribe_widget"] .btn-md {
     padding: 0;
     height: 50px;
     line-height: 50px;
@@ -54,27 +54,27 @@ p {
     width: calc(100% - 115px)
 }
 
-.youtube .btn-md
+[id*="youtube-subscribe_widget"] .btn-md
 i {
     margin: 0
         5px 0 0
 }
 
-.youtube .button-cnt {
+[id*="youtube-subscribe_widget"] .button-cnt {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     min-width: 1px
 }
 
-.youtube-cnt,
-.youtube
+[id*="youtube-subscribe_widget"]-cnt,
+[id*="youtube-subscribe_widget"]
 .btn {
     height: 50px;
     line-height: 50px
 }
 
-.youtube
+[id*="youtube-subscribe_widget"]
 .btn {
     padding: 0;
     text-align: center;
@@ -83,17 +83,17 @@ i {
     flex: 1
 }
 
-.youtube .btn
+[id*="youtube-subscribe_widget"] .btn
 i {
     margin: 0
 }
 
-.two-sidebars .youtube .btn
+.two-sidebars [id*="youtube-subscribe_widget"] .btn
 i {
     display: none
 }
 
-.youtube-cnt {
+[id*="youtube-subscribe_widget"]-cnt {
     position: relative;
     -webkit-flex: 0 0 92px;
     -ms-flex: 0 0 92px;
@@ -104,7 +104,7 @@ i {
     background-color: #f3f3f3
 }
 
-.youtube-cnt:before {
+[id*="youtube-subscribe_widget"]-cnt:before {
     right: 100%;
     top: 50%;
     border: solid transparent;

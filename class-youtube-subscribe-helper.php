@@ -65,12 +65,16 @@ class Youtube_Subscribe_Helper {
 		if ( $route ) {
 			ob_start();
 
+			$this->setup_widget_data( $args, $instance );
+			$this->widget_start( $args, $instance );
+
 			include $route;
 
-			$view = ob_get_contents();
+			$this->widget_end( $args );
+			$this->reset_widget_data();
 
-			ob_end_clean();
-			echo $view;
+			echo $this->cache_widget( $args, ob_get_clean() );
+
 		} else {
 			echo 'Template not found';
 		}
@@ -97,7 +101,8 @@ class Youtube_Subscribe_Helper {
 	 * Overloading of view file
 	 */
 	public static function get_view_file() {
-
+		
+		//locate_template('templates/youtube-subscribe.php',false );
 		if ( file_exists( get_template_directory() . '/templates/youtube-subscribe.php' ) ) {
 			return get_template_directory() . '/templates/youtube-subscribe.php';
 		}
