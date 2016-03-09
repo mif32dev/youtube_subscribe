@@ -8,7 +8,7 @@
 		<div class="channel-name">
 			<h5 class="txt-heading text-primary"> <?php echo $instance['channel_title']; ?></h5>
 			<p> <?php echo $args['video_count']; ?></p>
-			<a href="<?php echo $args['channel_url']; ?>" class="icon icon-lg icon-secondary fa fa-3x fa-youtube"></a>
+			<span class="icon icon-lg icon-secondary fa fa-3x fa-youtube"></span>
 		</div>
 
 		<div class="button-cnt">
