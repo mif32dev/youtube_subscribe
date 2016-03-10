@@ -101,8 +101,7 @@ class Youtube_Subscribe_Helper {
 	 * Overloading of view file
 	 */
 	public static function get_view_file() {
-		
-		//locate_template('templates/youtube-subscribe.php',false );
+
 		if ( file_exists( get_template_directory() . '/templates/youtube-subscribe.php' ) ) {
 			return get_template_directory() . '/templates/youtube-subscribe.php';
 		}
