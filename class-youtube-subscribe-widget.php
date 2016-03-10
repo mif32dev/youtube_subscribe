@@ -69,10 +69,10 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 */
 		private function get_channel_data( $channel_url, $app_key = '' ) {
 
-			$url_parts = explode( '/', $channel_url );
+			$url_parts = explode( '/', esc_url( $channel_url ) );
 
 			$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' . end( $url_parts ) . '&key=' . $app_key;
-
+		 
 			$result = Youtube_Subscribe_Helper::get_contents( $url );
 
 			return $result ? json_decode( $result, true ) : false;
