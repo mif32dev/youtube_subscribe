@@ -46,17 +46,17 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 				'novideo'  => array(
 					'type'  => 'text',
 					'value' => esc_html__( 'novideo', 'youtube-subscribe' ),
-					'label' => esc_html__( '0', 'youtube-subscribe' ),
+					'label' => esc_html__( ' Text to display when there are no video ', 'youtube-subscribe' ),
 					),
 				'one_video'  => array(
 					'type'  => 'text',
 					'value' => esc_html__( 'video', 'youtube-subscribe' ),
-					'label' => esc_html__( '1', 'youtube-subscribe' ),
+					'label' => esc_html__( 'Text to display when there is one video', 'youtube-subscribe' ),
 					),
 				'many_videos'  => array(
 					'type'  => 'text',
 					'value' => esc_html__( 'videos', 'youtube-subscribe' ),
-					'label' => esc_html__( '>1', 'youtube-subscribe' ),
+					'label' => esc_html__( 'Text to display when there is more than one video', 'youtube-subscribe' ),
 					),
 			);
 			parent::__construct();

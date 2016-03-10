@@ -19,6 +19,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 // If class 'Cherry_Custom_Sidebars' not exists.
 if ( ! class_exists( 'Cherry_Youtube_Subscribe' ) ) {
+
+	/**
+	 * Class add all hooks.
+	 */
 	class Cherry_Youtube_Subscribe {
 		/**
 		 * A reference to an instance of this class.
@@ -100,7 +104,7 @@ if ( ! class_exists( 'Cherry_Youtube_Subscribe' ) ) {
 				),
 			));
 		}
-				/**
+		/**
 		 * Include and add all foles.
 		 *
 		 * @since  1.0.0

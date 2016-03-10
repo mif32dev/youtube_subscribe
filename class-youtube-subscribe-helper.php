@@ -55,32 +55,6 @@ class Youtube_Subscribe_Helper {
 	}
 
 	/**
-	 * Making and print view
-	 *
-	 * @param string $route route to the view file.
-	 * @param array  $args data value for view.
-	 */
-	public static function render( $route, $args ) {
-
-		if ( $route ) {
-			ob_start();
-
-			$this->setup_widget_data( $args, $instance );
-			$this->widget_start( $args, $instance );
-
-			include $route;
-
-			$this->widget_end( $args );
-			$this->reset_widget_data();
-
-			echo $this->cache_widget( $args, ob_get_clean() );
-
-		} else {
-			echo 'Template not found';
-		}
-	}
-
-	/**
 	 * Searching at array
 	 *
 	 * @param array  $array array for search.
@@ -102,8 +76,8 @@ class Youtube_Subscribe_Helper {
 	 */
 	public static function get_view_file() {
 
-		if ( file_exists( get_template_directory() . '/templates/youtube-subscribe.php' ) ) {
-			return get_template_directory() . '/templates/youtube-subscribe.php';
+		if ( file_exists( locate_template( 'templates/youtube-subscribe.php', false ) ) ) {
+			return locate_template( 'templates/youtube-subscribe.php', false );
 		}
 		if ( file_exists( plugin_dir_path( __FILE__ ) . '/templates/youtube-subscribe-view.php' ) ) {
 			return plugin_dir_path( __FILE__ ) . '/templates/youtube-subscribe-view.php';
