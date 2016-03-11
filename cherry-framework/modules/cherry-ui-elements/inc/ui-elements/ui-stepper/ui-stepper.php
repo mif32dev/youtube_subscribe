@@ -16,14 +16,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! class_exists( 'UI_Stepper' ) ) {
-	class UI_Stepper {
 
-		/**
-		 * Requsted settings
-		 *
-		 * @var array
-		 */
-		private $settings = array();
+	/**
+	 * Class for the building UI_Stepper elements.
+	 */
+	class UI_Stepper extends UI_Element implements I_UI {
+
 		/**
 		 * Default settings
 		 *
@@ -78,20 +76,6 @@ if ( ! class_exists( 'UI_Stepper' ) ) {
 		}
 
 		/**
-		 * Get current file URL
-		 *
-		 * @since  4.0.0
-		 */
-		public static function get_current_file_url() {
-			$assets_url = dirname( __FILE__ );
-			$site_url = site_url();
-			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
-			$assets_url = str_replace( '\\', '/', $assets_url );
-
-			return $assets_url;
-		}
-
-		/**
 		 * Enqueue javascript and stylesheet UI_Stepper.
 		 *
 		 * @since  4.0.0
@@ -99,14 +83,14 @@ if ( ! class_exists( 'UI_Stepper' ) ) {
 		public static function enqueue_assets() {
 			wp_enqueue_script(
 				'ui-stepper-min',
-				self::get_current_file_url() . '/assets/min/ui-stepper.min.js',
+				self::get_current_file_url( __FILE__ ) . '/assets/min/ui-stepper.min.js',
 				array( 'jquery' ),
 				'1.0.0',
 				true
 			);
 			wp_enqueue_style(
 				'ui-stepper-min',
-				self::get_current_file_url() . '/assets/min/ui-stepper.min.css',
+				self::get_current_file_url( __FILE__ ) . '/assets/min/ui-stepper.min.css',
 				array(),
 				'1.0.0',
 				'all'

@@ -67,9 +67,7 @@ i {
     min-width: 1px
 }
 
-[id*="youtube-subscribe_widget"]-cnt,
-[id*="youtube-subscribe_widget"]
-.btn {
+[id*="youtube-subscribe_widget"] .button-cnt{
     height: 50px;
     line-height: 50px
 }
@@ -83,28 +81,9 @@ i {
     flex: 1
 }
 
-[id*="youtube-subscribe_widget"]-cnt {
+[id*="youtube-subscribe_widget"] .youtube-cnt {
     position: relative;
-    -webkit-flex: 0 0 92px;
-    -ms-flex: 0 0 92px;
-    flex: 0 0 92px;
-    margin: 0
-        0 0 20px;
+    margin: 0 0 0 20px;
     text-align: center;
-    background-color: #f3f3f3
-}
 
-[id*="youtube-subscribe_widget"]-cnt:before {
-    right: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(243,243,243,0);
-    border-right-color: #f3f3f3;
-    border-width: 8px;
-    margin-top: -8px
 }

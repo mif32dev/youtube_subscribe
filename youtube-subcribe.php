@@ -45,7 +45,7 @@ if ( ! class_exists( 'Cherry_Youtube_Subscribe' ) ) {
 		 */
 		public function __construct() {
 
-			add_action( 'plugins_loaded', array( $this, 'get_core' ), 3 );
+			add_action( 'after_setup_theme', array( $this, 'get_core' ), 10 );
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 5 );
 			// Load the functions files.
@@ -77,6 +77,7 @@ if ( ! class_exists( 'Cherry_Youtube_Subscribe' ) ) {
 			if ( null !== $this->core ) {
 				return $this->core;
 			}
+			
 			if ( ! class_exists( 'Cherry_Core' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'cherry-framework/cherry-core.php' );
 			}

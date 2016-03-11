@@ -18,7 +18,7 @@ var CherryJsCore;
 				script : wp_load_script,
 				style : wp_load_style
 			},
-			ui_auto_init: ( 'true' == ui_init_object.auto_init ) ? true : false,
+			ui_auto_init: ( 'true'=== ui_init_object.auto_init ) ? true : false,
 			ui_auto_target: ui_init_object.targets
 		},
 
@@ -43,7 +43,7 @@ var CherryJsCore;
 					not_supported = { 'msie' : [8] };
 
 				for ( var browser in not_supported ) {
-					if( uset_browser.browser  != 'undefined' ){
+					if( uset_browser.browser  !== 'undefined' ){
 						for ( var version in not_supported[ browser ] ) {
 							if( uset_browser.version <= not_supported [ browser ] [ version ] ){
 								return false;
@@ -90,7 +90,7 @@ var CherryJsCore;
 				$( document ).on( 'widget-updated', function( event, data ){
 					$( window ).trigger( 'cherry-ui-elements-init', { 'target': data } );
 				} );
-			},
+			}
 		},
 
 		utilites : {
@@ -128,12 +128,12 @@ var CherryJsCore;
 						file_name = file_url.replace( reg_name, '' ),
 						file_type = file_url.match( reg_type )[ 0 ];
 
-					if( file_type === '.js' && $.inArray( file_name, CherryJsCore.variable.loaded_assets.script ) == -1 ){
+					if( file_type === '.js' && $.inArray( file_name, CherryJsCore.variable.loaded_assets.script ) === -1 ){
 						data.script.push( file_url );
 						CherryJsCore.variable.loaded_assets.script.push( file_name );
 					}
 
-					if( file_type === '.css' && $.inArray( file_name, CherryJsCore.variable.loaded_assets.style ) == -1 ){
+					if( file_type === '.css' && $.inArray( file_name, CherryJsCore.variable.loaded_assets.style ) === -1 ){
 						data.style.push( file_url );
 						CherryJsCore.variable.loaded_assets.style.push( file_name );
 					}
