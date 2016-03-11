@@ -85,5 +85,8 @@ i {
     position: relative;
     margin: 0 0 0 20px;
     text-align: center;
+}
 
+[id*="youtube-subscribe_widget"] .youtube-cnt p{
+    margin: 0;
 }
