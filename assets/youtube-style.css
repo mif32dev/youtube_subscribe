@@ -72,19 +72,20 @@ i {
     line-height: 50px
 }
 
-[id*="youtube-subscribe_widget"]
-.btn {
-    padding: 0;
+[id*="youtube-subscribe_widget"] .btn {
     text-align: center;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3
 }
 
 [id*="youtube-subscribe_widget"] .youtube-cnt {
     position: relative;
     margin: 0 0 0 20px;
     text-align: center;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1
 }
 
 [id*="youtube-subscribe_widget"] .youtube-cnt p{
