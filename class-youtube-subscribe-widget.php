@@ -105,9 +105,10 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 				$args['video_count'] = Youtube_Subscribe_Helper::array_get( $instance, 'novideo' );
 			} else {
 				$args['video_count'] = Youtube_Subscribe_Helper::array_get( $channel_data['items'][0]['statistics'], 'videoCount', 0 );
-				$args['video_count'] = $args['video_count'] . ' ' . Youtube_Subscribe_Helper::array_get( $instance, 'many_videos' );
 				if ( 1 == $args['video_count'] ) {
 					$args['video_count'] = $args['video_count'] . ' ' . Youtube_Subscribe_Helper::array_get( $instance, 'one_video' );
+				} else {
+					$args['video_count'] = $args['video_count'] . ' ' . Youtube_Subscribe_Helper::array_get( $instance, 'many_videos' );
 				}
 			}
 
