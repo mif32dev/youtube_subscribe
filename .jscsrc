@@ -29,5 +29,7 @@
         "cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-collection/assets/js/jquery.collection.js",
         "cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-collection/assets/js/min/jquery.collection.min.js",
         "cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-collection/assets/js/ui-collection.js",
+        "cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-select/assets/min/select2.min.js",
+        "cherry-framework/modules/cherry-ui-elements/inc/ui-elements/ui-radio/assets/min/ui-radio.min.js",
   ]
 }
