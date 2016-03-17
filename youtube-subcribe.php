@@ -77,7 +77,7 @@ if ( ! class_exists( 'Cherry_Youtube_Subscribe' ) ) {
 			if ( null !== $this->core ) {
 				return $this->core;
 			}
-			
+
 			if ( ! class_exists( 'Cherry_Core' ) ) {
 				require_once( plugin_dir_path( __FILE__ ) . 'cherry-framework/cherry-core.php' );
 			}
@@ -109,7 +109,6 @@ if ( ! class_exists( 'Cherry_Youtube_Subscribe' ) ) {
 		 * Include and add all foles.
 		 *
 		 * @since  1.0.0
-		 *
 		 */
 		function subscribe_widget() {
 

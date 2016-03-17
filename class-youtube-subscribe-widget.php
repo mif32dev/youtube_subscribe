@@ -2,7 +2,7 @@
 /**
  * Description: Youtube Subscribe Widget
  * Author: Osadchyi Serhii
- * Author URI: https://github.com/RDSergij
+ * Author URI: https://github.com/mif32dev
  *
  * @package Monster_Youtube_Subscribe_Widget
  *
@@ -18,8 +18,8 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 * Register widget with WordPress.
 		 */
 		public function __construct() {
-			//$this->widget_cssclass    = 'youtube-subscribe widget-about-author';
-			$this->widget_description =  __( 'Youtube subscribe Widget', 'youtube-subscribe' );
+
+			$this->widget_description = __( 'Youtube subscribe Widget', 'youtube-subscribe' );
 			$this->widget_id          = 'youtube-subscribe_widget';
 			$this->widget_name        = __( 'Youtube subscribe widget', 'youtube-subscribe' );
 			$this->settings           = array(
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 			$url_parts = explode( '/', esc_url( $channel_url ) );
 
 			$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' . end( $url_parts ) . '&key=' . $app_key;
-		 
+
 			$result = Youtube_Subscribe_Helper::get_contents( $url );
 
 			return $result ? json_decode( $result, true ) : false;

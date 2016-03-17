@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class Cherry Core
  *
  * @package    Cherry_Framework
  * @subpackage Class
@@ -15,7 +16,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! class_exists( 'Cherry_Core' ) ) {
-
+	/**
+	 * Class Cherry Core
+	 */
 	class Cherry_Core {
 
 		/**
@@ -48,10 +51,10 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		public $modules = array();
 
 		/**
-		* Cherry_Core constructor
-		*
-		* @since 1.0.0
-		*/
+		 * Cherry_Core constructor
+		 *
+		 * @since 1.0.0
+		 */
 		public function __construct( $settings = array() ) {
 
 			$default_settings = array(
@@ -61,6 +64,9 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 			);
 
 			$this->settings = array_merge( $default_settings, $settings );
+
+			// Load I_Module interface
+			require_once( 'i-module.php' );
 
 			$this->autoload_modules();
 
@@ -107,11 +113,11 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		/**
 		 * Init sinle module
 		 *
-		 * @param  string $module module slug.
+		 * @param  [type] $module module slug.
 		 * @param  array  $args   Module arguments array.
 		 *
 		 * @since  1.0.0
-		 * @return void
+		 * @return mixed
 		 */
 		public function init_module( $module, $args = array() ) {
 			$hook = $module . '-module';
@@ -125,7 +131,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		 * @since  1.0.0
 		 * @param bool|object $module_instance Module instnce to return, false at start.
 		 * @param array       $args            Module rguments.
-		 * @param Cherry_Core $this            Current core object.
+		 * @param Cherry_Core $core_instance            Current core object.
 		 * @return object|bool
 		 */
 		public function pre_load( $module_instance, $args = array(), $core_instance ) {
@@ -145,7 +151,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		/**
 		 * Check module autoload.
 		 *
-		 * @param  string  $module module slug.
+		 * @param  [type] $module module slug.
 		 * @return boolean
 		 */
 		public function is_module_autoload( $module ) {
@@ -160,7 +166,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		/**
 		 * Include module.
 		 *
-		 * @param  string $module module slug.
+		 * @param  [type] $module module slug.
 		 *
 		 * @since  1.0.0
 		 * @return bool
@@ -185,7 +191,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		/**
 		 * Get module instance.
 		 *
-		 * @param  string $module module slug.
+		 * @param  [type] $module module slug.
 		 *
 		 * @since  1.0.0
 		 * @return object
@@ -205,7 +211,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		/**
 		 * Get class name by module slug.
 		 *
-		 * @param  string $slug Module slug.
+		 * @param  [type] $slug Module slug.
 		 *
 		 * @since  1.0.0
 		 * @return string       Class name
@@ -221,7 +227,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		 * Get path to main file for passed module
 		 *
 		 * @since  1.0.0
-		 * @param  string $module module slug.
+		 * @param  [type] $module module slug.
 		 * @return string
 		 */
 		public function get_module_path( $module ) {
@@ -234,7 +240,7 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		 * @since  1.0.0
 		 * @return string
 		 */
-		public function get_core_dir(){
+		public function get_core_dir() {
 			return trailingslashit( $this->settings['base_dir'] );
 		}
 
@@ -244,8 +250,42 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 		 * @since  1.0.0
 		 * @return string
 		 */
-		public function get_core_url(){
+		public function get_core_url() {
 			return trailingslashit( $this->settings['base_url'] );
+		}
+
+		/**
+		 * Render view
+		 *
+		 * @param type  $path view path.
+		 * @param  array $data include data.
+		 * @return rendered html
+		 */
+		public static function render_view( $path, array $data = array() ) {
+
+			// Add parameters to temporary query variable.
+			if ( array_key_exists( 'wp_query', $GLOBALS ) ) {
+				if ( is_array( $GLOBALS['wp_query']->query_vars ) ) {
+					$GLOBALS['wp_query']->query_vars['__data'] = $data;
+				}
+			}
+
+			ob_start();
+			load_template( $path, false );
+			$result = ltrim( ob_get_clean() );
+
+			/**
+			 * Remove temporary wp query variable
+			 * Yeah. I'm paranoic.
+			 */
+			if ( array_key_exists( 'wp_query', $GLOBALS ) ) {
+				if ( is_array( $GLOBALS['wp_query']->query_vars ) ) {
+					unset( $GLOBALS['wp_query']->query_vars['__data'] );
+				}
+			}
+
+			// Return the compiled view and terminate the output buffer.
+			return $result;
 		}
 
 		/**
@@ -263,7 +303,5 @@ if ( ! class_exists( 'Cherry_Core' ) ) {
 
 			return self::$instance;
 		}
-
 	}
-
 }
