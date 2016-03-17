@@ -253,7 +253,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @param  array  $args    widget arguments.
-		 * @param  string $content widget content.
+		 * @param  [type] $content widget content.
 		 * @return string the content that was cached
 		 */
 		public function cache_widget( $args, $content ) {
@@ -373,7 +373,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @param  array  $field field data.
-		 * @param  string $id    field key.
+		 * @param  [type] $id    field key.
 		 * @return bool
 		 */
 		public function set_field_types( $field, $id ) {
@@ -424,7 +424,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 		 *
 		 * @since  1.0.0
 		 * @param  array  $setting arguments array.
-		 * @param  string $arg     argument key.
+		 * @param  [type] $arg     argument key.
 		 * @param  mixed  $default default argument value.
 		 * @return mixed
 		 */
@@ -556,7 +556,7 @@ if ( ! class_exists( 'Cherry_Abstract_Widget' ) ) {
 		 * Retrieve a string translation via WPML.
 		 *
 		 * @since  1.0.1
-		 * @param  string $id Widget setting ID.
+		 * @param  [type] $id Widget setting ID.
 		 */
 		public function use_wpml_translate( $id ) {
 			return ! empty( $this->instance[ $id ] ) ? apply_filters( 'wpml_translate_single_string', $this->instance[ $id ], 'Widgets', "{$this->widget_name} - {$id}" ) : '';

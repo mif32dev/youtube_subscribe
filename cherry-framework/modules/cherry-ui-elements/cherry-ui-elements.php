@@ -92,7 +92,7 @@ if ( ! class_exists( 'Cherry_UI_Elements' ) ) {
 		/**
 		 * Get ui element instance.
 		 *
-		 * @param string $ui_slug ui element.
+		 * @param [type] $ui_slug ui element.
 		 * @param array  $args arguments.
 		 *
 		 * @since  1.0.0
