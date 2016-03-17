@@ -16,9 +16,9 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		/**
 		 * Set Cache
 		 *
-		 * @param string  $key cache name.
-		 * @param string  $val data.
-		 * @param integer $time cache time.
+		 * @param [type] $key cache name.
+		 * @param [type] $val data.
+		 * @param [type] $time cache time.
 		 */
 		public static function set_cache( $key, $val, $time = 3600 ) {
 			set_transient( $key, $val, $time );
@@ -27,7 +27,7 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		/**
 		 * Get Cache
 		 *
-		 * @param string $key cache file.
+		 * @param [type] $key cache file.
 		 * @return mixed
 		 */
 		public static function get_cache( $key ) {
@@ -62,8 +62,8 @@ if ( ! class_exists( 'Youtube_Subscribe_Widget' ) ) {
 		 * Searching at array
 		 *
 		 * @param array  $array array for search.
-		 * @param string $key searching key.
-		 * @param string $default retutn value if search fail.
+		 * @param [type] $key searching key.
+		 * @param [type] $default retutn value if search fail.
 		 */
 		public static function array_get( $array, $key, $default = '' ) {
 			$array = (array) $array;
