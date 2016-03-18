@@ -1,1 +1,1 @@
-# youtube_subscribe
+# youtube_subscribe plugin
